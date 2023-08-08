@@ -29,7 +29,7 @@ export const App = () => {
           return;
         }
 
-        setgalleryItems(g => [...g, ...parseResponse.data.hits]);
+        setgalleryItems(galleryLast => [...galleryLast, ...parseResponse.data.hits]);
         setstatus('resolved');
         setloadMore(page < Math.ceil(parseResponse.data.totalHits / 12));
       } catch (error) {
@@ -41,7 +41,7 @@ export const App = () => {
   }, [searchQuery, page]);
 
   const incrementPage = () => {
-    setpage(page + 1);
+    setpage(Lastpage=> Lastpage + 1);
   };
 
   const handleFormSubmit = getsearchQuery => {
